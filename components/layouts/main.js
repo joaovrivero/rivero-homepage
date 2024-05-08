@@ -1,34 +1,34 @@
 import Head from 'next/head'
 import Navbar from '../navbar.js'
 import { Box, Container } from '@chakra-ui/react'
-import VoxelDog from '../voxel-dog'
+import VoxelArt from '../voxel-art'
 import dynamic from 'next/dynamic'
+import Footer from '../footer.js'
 
-const LazyVoxelDog = dynamic(() => import('../voxel-dog'), {
-    ssr: false,
-    loading: () => <VoxelDog />
+const LazyVoxelArt = dynamic(() => import('../voxel-art'), {
+  ssr: false,
+  loading: () => <VoxelArt />
 })
 
-const Main = ({ children, router}) => {
-    return (
-        <Box as="main" pb={8}>
-            <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <title>Rivero - Homepage</title>
-            </Head>
+const Main = ({ children, router }) => {
+  return (
+    <Box as="main" pb={8}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Rivero</title>
+      </Head>
 
-            <Navbar path={router.asPath} />
+      <Navbar path={router.asPath} />
 
-            <Container maxW="container.md" pt={14}>
-                                
-                    <LazyVoxelDog />
-                
-                {children}
+      <Container maxW="container.md" pt={14}>
+        <LazyVoxelArt />
 
-                
-            </Container>
-        </Box>
-    )
+        {children}
+
+        <Footer />
+      </Container>
+    </Box>
+  )
 }
 
 export default Main
